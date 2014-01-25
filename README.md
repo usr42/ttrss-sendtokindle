@@ -1,12 +1,20 @@
 ttrss-sendtokindle
 ==================
 
-Tiny Tiny RSS Plugin to send articles to your kindle with a singel click. Tested with TT-RSS 1.11.
+Tiny Tiny RSS Plugin to send articles to your kindle with a single click. Tested with TT-RSS 1.11.
 
 Installation
 ------------
-To use this plugin you have to configure your kindle mail address in your Tiny Tiny RSS Acccoung Settings page at "Personal data / Authentication".
-At your "My Kindle" site of Amazon (e.g.  https://www.amazon.com/myk or  https://www.amazon.de/myk) you must allow sending documents to your kindle from the address 'kindle@darkhelmetlive.com' because the plugin uses the service of http://tinderizer.com/.
+* Goto your plugins directory and clone this git repository with following command:  
+`git clone https://github.com/usr42/ttrss-sendtokindle kindle`  
+OR
+* Download this repository as zip: https://github.com/usr42/ttrss-sendtokindle/archive/master.zip and unzip it into your plugin directory and rename the folder to 'kindle'
+* Go to your tt-rss Preference page
+* Under Plugins section enable the kindle plugin
+* Configure your Kindle mail address at "Personal data / Authentication" preferences.
+* Go to your "My Kindle" site (e.g.  https://www.amazon.com/myk or  https://www.amazon.de/myk)
+* Add "kindle@darkhelmetlive.com" to your Kindle Approved Email List  because the plugin uses the service of http://tinderizer.com/ to send the website to your kindle.
+![Add "kindle@darkhelmetlive.com" to your Kindle Approved Email List](http://img.skitch.com/20110523-jykm4xnmsg783thqmd6qtmdcab.jpg "Kindle Approved Email List")  
 
 Version history
 ---------------
