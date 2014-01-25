@@ -18,7 +18,7 @@ OR
 
 Usage
 -----
-* Click on The Kindle Symbol ![Kindle Symbol] (http://i42.tinypic.com/vimiaf.png Kindle Symbol) to send the actual article to your Kindle
+* Click on The Kindle Symbol ![Kindle Symbol] (http://i42.tinypic.com/vimiaf.png Kindle Symbol) to send the actual article to your Kindle  
 OR
 * Use the hotkey **Shift-K** to send the actual article to your Kindle
 
