@@ -4,7 +4,7 @@ class Kindle extends Plugin {
 	private $host;
 
 	function about() {
-		return array(0.1,
+		return array(0.2,
 			"Share articles to kindle using tinderizer",
 			"usr42");
 	}
@@ -14,7 +14,21 @@ class Kindle extends Plugin {
 
 		$host->add_hook($host::HOOK_ARTICLE_BUTTON, $this);
     $host->add_hook($host::HOOK_PREFS_TAB_SECTION, $this);
+    $host->add_hook($host::HOOK_HOTKEY_MAP, $this);
+    $host->add_hook($host::HOOK_HOTKEY_INFO, $this);
 	}
+  
+  function hook_hotkey_map($hotkeys) {
+    // Use the new target "open_in_background_tab" to define your own 
+    // hotkey to this function in other plugins.
+    $hotkeys['*k'] = 'send_to_kindle';
+
+    return $hotkeys;
+  }
+  function hook_hotkey_info($hotkeys) {
+    $hotkeys[__("Article")]["send_to_kindle"] = __("Send Article to your Kindle");
+    return $hotkeys;
+  }
 
 	function get_js() {
 		return file_get_contents(dirname(__FILE__) . "/kindle.js");

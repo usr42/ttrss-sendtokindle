@@ -29,4 +29,9 @@ function emailArticleKindle(id) {
 	}
 }
 
-
+hotkey_actions['send_to_kindle'] = function() {
+  if (getActiveArticleId()) {
+    emailArticleKindle(getActiveArticleId());
+    return;
+  }
+};
