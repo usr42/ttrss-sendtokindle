@@ -5,7 +5,7 @@ class Kindle extends Plugin {
 
 	function about() {
 		return array(1.0,
-			"Share article to kindle using tinderizer",
+			"Share articles to kindle using tinderizer",
 			"usr42");
 	}
 
@@ -24,12 +24,12 @@ class Kindle extends Plugin {
 		return "<img src=\"plugins/kindle/kindle.png\"
 					class='tagsPic' style=\"cursor : pointer\"
 					onclick=\"emailArticleKindle(".$line["id"].")\"
-					alt='Zoom' title='".__('Forward by email')."'>";
+					alt='Zoom' title='Send to kindle'>";
 	}
 	function hook_prefs_tab_section($args) {
     if ($args != "prefPrefsAuth") return;
 
-    print "<h2>Kindle Mail Address</h2>";
+    print "<h2>Kindle ".__('E-mail')."</h2>";
 
     $email = $this->host->get($this, "kindle-mail");
 
@@ -51,7 +51,7 @@ class Kindle extends Plugin {
     print "<input dojoType=\"dijit.form.TextBox\" style=\"display : none\" name=\"method\" value=\"save\">";
     print "<input dojoType=\"dijit.form.TextBox\" style=\"display : none\" name=\"plugin\" value=\"kindle\">";
 		print "<table width=\"100%\" class=\"prefPrefsList\">";
-    print "<tr><td width=\"40%\">".__('Kindle Mail Address')."</td>";
+    print "<tr><td width=\"40%\">Kindle ".__('E-mail')."</td>";
     print "<td class=\"prefValue\"><input dojoType=\"dijit.form.ValidationTextBox\" name=\"email\" required=\"1\" value=\"$email\"></td></tr>";
 		print "</table>";
     print "<p><button dojoType=\"dijit.form.Button\" type=\"submit\">".
@@ -61,7 +61,11 @@ class Kindle extends Plugin {
   }
   
   function save() {
-		$email = db_escape_string($_POST["email"]);
+    $email = db_escape_string($_POST["email"]);
+    if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+      echo "Mail address is not valid!";
+      exit;
+    } 
 
 		$this->host->set($this, "kindle-mail", $email);
 
@@ -72,6 +76,11 @@ class Kindle extends Plugin {
 		require_once 'classes/ttrssmailer.php';
 		$id = db_escape_string($_REQUEST['id']);
     $email = $this->host->get($this, "kindle-mail");
+    if ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+			$reply['error'] =  "No valid mail-address is configured.\nGo to Preferences->'Personal data / Authentication'->'Kindle E-Mail' and save your kindle mail address.";
+      print json_encode($reply);
+      exit;
+    } 
     $hex = '';
     $ascii = $email;
     for ($i = 0; $i < strlen($ascii); $i++) {
