@@ -4,7 +4,7 @@ class Kindle extends Plugin {
 	private $host;
 
 	function about() {
-		return array(1.0,
+		return array(0.1,
 			"Share articles to kindle using tinderizer",
 			"usr42");
 	}
