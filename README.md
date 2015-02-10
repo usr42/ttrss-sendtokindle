@@ -30,4 +30,4 @@ Version history
 Thanks to
 ---------
 *  http://tinderizer.com/ : Go to his website and donate if you like his work!
-* Tiny Tiny RSS 
+* Tiny Tiny RSS http://tt-rss.org
